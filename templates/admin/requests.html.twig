@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+
+{% block nav %} {{ parent() }}
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <h1>All Personnel</h1>
+        <table class="table">
+            <caption>List of Room Reservation Requests</caption>
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Building Name</th>
+                <th scope="col">Room Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time (Period)</th>
+                <th scope="col"> </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Fredom Building</td>
+                <td>A23</td>
+                <td>21/10/2022</td>
+                <td>9:00 - 12:30</td>
+                <td><button type="button" class="btn btn-danger">Decline</button>      <button type="button" class="btn btn-success">Accept</button>   </td>
+
+            </tr>
+            <tr>
+                <th scope="row">1</th>
+                <td>Fredom Building</td>
+                <td>A23</td>
+                <td>21/10/2022</td>
+                <td>9:00 - 12:30</td>
+                <td><button type="button" class="btn btn-danger">Decline</button>      <button type="button" class="btn btn-success">Accept</button>   </td>
+
+            </tr>
+            <tr>
+                <th scope="row">1</th>
+                <td>Fredom Building</td>
+                <td>A23</td>
+                <td>21/10/2022</td>
+                <td>9:00 - 12:30</td>
+                <td><button type="button" class="btn btn-danger">Decline</button>      <button type="button" class="btn btn-success">Accept</button>   </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </main>
+{% endblock %}
+

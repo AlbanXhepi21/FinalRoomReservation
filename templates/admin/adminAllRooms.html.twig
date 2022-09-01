@@ -1,0 +1,53 @@
+{% extends "base.html.twig" %}
+
+
+{% block nav %} {{ parent() }}
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <h1>All Rooms</h1>
+
+        <table class="table">
+            <caption>List of rooms</caption>
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Room Name</th>
+                <th scope="col">Capacity</th>
+                <th scope="col">Status</th>
+                <th scope="col">Price</th>
+                <th scope="col"> </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>A27</td>
+                <td>10</td>
+                <td>Free</td>
+                <td>$150</td>
+                <td><button onclick="location.href='/admin/rooms/A27'" type="button" class="btn btn-info">More Info</button></td>
+
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>B23</td>
+                <td>5</td>
+                <td>Full</td>
+                <td>$150</td>
+                <td><button onclick="location.href='/admin/rooms/B23'"  type="button" class="btn btn-info">More Info</button></td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>A09</td>
+                <td>23</td>
+                <td>full</td>
+                <td>$150</td>
+                <td> <button onclick="location.href='/admin/rooms/A09'"  type="button" class="btn btn-info">More Info</button> </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </main>
+{% endblock %}
+
+
+

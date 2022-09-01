@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+
+
+{% block nav %} {{ parent() }}
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+
+
+            <h1 class="h2">Select a Building</h1>
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+
+            <table class="table">
+                <caption>List of rooms</caption>
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Building Name</th>
+                    <th scope="col">Number of Rooms</th>
+                    <th scope="col">Address</th>
+                    <th scope="col"> </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Freedom</td>
+                    <td>10</td>
+                    <td>Bllok</td>
+                    <td><button onclick="location.href='/book/freedom'" type="button" class="btn btn-success">Select</button></td>
+
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Rainbow</td>
+                    <td>45</td>
+                    <td>Don Bosko</td>
+                    <td><button onclick="location.href='/book/rainbow'" type="button" class="btn btn-success">Select</button></td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Univers</td>
+                    <td>32</td>
+                    <td>Laprake</td>
+                    <td><button onclick="location.href='/book/univers'" type="button" class="btn btn-success">Select</button></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </main>
+{% endblock %}
+
+
+

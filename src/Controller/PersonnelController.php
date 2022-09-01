@@ -19,20 +19,44 @@ class PersonnelController extends AbstractController
 
     }
 
-    #[Route('/bookings/{slug}')]
-    public function rooms($slug = null):Response
+    #[Route('/book/{slug}/{room}')]
+    public function book($slug = null, $room=null):Response
     {
 
         if($slug)
         {
-            $title ='Personnel Book Page,   Room: '. u(str_replace('-', ' ', $slug))->title(true);
+
+            if($room)
+            {
+
+
+                return $this->render('personnel/singleRoom.html.twig', [
+                    'building' => u(str_replace('-', ' ', $slug))->title(true),
+                    'room' =>  u(str_replace('-', ' ', $room))->title(true)
+                ]);
+
+
+            }
+
+            else{
+
+
+                return $this->render('personnel/rooms.html.twig', [
+                    'building' => u(str_replace('-', ' ', $slug))->title(true)
+                ]);
+            }
+
+
         }
         else
-            $title = 'Personnel Book Page , All Bookings Available';
+        {
+            $title ='Personnel Book Page,   Room: '. u(str_replace('-', ' ', $slug))->title(true);
 
-        return $this->render('personnel/personnelAllBookings.html.twig', [
-            'bookings' => $title
-        ]);
+            return $this->render('personnel/book.html.twig', [
+                'bookings' => $title
+            ]);
+        }
+
 
     }
 

@@ -1,0 +1,62 @@
+{% extends "base.html.twig" %}
+
+
+{% block nav %} {{ parent() }}
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <h1> Building : {{ building }}</h1>
+        <h2> Room : {{ room }}</h2>
+
+
+        <h3>Info</h3>
+        <ul>
+            <li>Id : 21</li>
+            <li>Building : Freedom </li>
+            <li>Name : A34 </li>
+            <li>Capacity : 6 </li>
+        </ul>
+
+        <h3>Status</h3>  <br>
+        <label >Date </label>
+        <input name="date"  type="date">
+        <button>Search</button>
+
+        <br><br>
+
+
+
+
+        <table id="time" class="table table-bordered table-white">
+            <thead>
+            <tr>
+                <th scope="col" >9:00 -10:00 </th>
+                <th scope="col">10:00 - 11:00</th>
+                <th scope="col">11:00 - 12:00</th>
+                <th scope="col">12:00 - 1:00</th>
+                <th scope="col">1:00 - 2:00</th>
+                <th scope="col">2:00 - 3:00</th>
+                <th scope="col">3:00 - 4:00 </th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row" class="table-primary">Select</th>
+                <td class="table-warning">Reserved</td>
+                <td class="table-warning">Reserved</td>
+               <td onclick="function hello()  {
+                    }"
+                 class="table-primary"> Select </td>
+                <td class="table-warning">Reserved</td>
+                <td class="table-primary">Select</td>
+                <td class="table-primary">Select</td>
+
+
+            </tr>
+
+
+
+
+
+    </main>
+{% endblock %}
+

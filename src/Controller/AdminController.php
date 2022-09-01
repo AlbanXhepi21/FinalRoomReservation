@@ -11,45 +11,68 @@ class AdminController extends AbstractController
 {
 
 
-    #[Route('/admin')]
+    #[Route('/admin' , name:'admin_homepage')]
     public function homepage():Response
     {
-        return $this->render('admin/adminHomepage.html.twig', [
+        return $this->render('admin/homepage.html.twig', [
             'title' => 'Admin homepage'
         ]);
 
     }
 
-    #[Route('/admin/rooms/{slug}')]
+    #[Route('/admin/rooms/{slug}', name:'admin_rooms')]
     public function rooms($slug = null):Response
     {
 
         if($slug)
         {
-            $title ='Admin Rooms Page,   Room: '. u(str_replace('-', ' ', $slug))->title(true);
+            $title =' Room: '. u(str_replace('-', ' ', $slug))->title(true);
+            return $this->render('admin/singleRoom.html.twig', [
+                'name' => $title
+            ]);
         }
         else
+        {
             $title = 'Admin Rooms Page, All Rooms';
 
-        return $this->render('admin/adminAllRooms.html.twig', [
-            'rooms' => $title
-        ]);
+            return $this->render('admin/adminAllRooms.html.twig', [
+                'rooms' => $title
+            ]);
+        }
+
 
     }
 
-    #[Route('/admin/personnel/{slug}')]
+    #[Route('/admin/personnel/{slug}', name:'admin_personnel')]
     public function personnel($slug = null):Response
     {
 
         if($slug)
         {
-            $title ='Admin Personnel Page,   Personnel: '. u(str_replace('-', ' ', $slug))->title(true);
+            $title =' Personnel: '. u(str_replace('-', ' ', $slug))->title(true);
+            return $this->render('admin/singlePersonnel.html.twig', [
+                'name' => $title
+            ]);
         }
         else
-            $title = 'Admin Personnel Page, All Personnel';
+        {
 
-        return $this->render('admin/adminAllPersonnel.html.twig', [
-            'personnel' => $title
+            $title = 'Admin Personnel Page, All Personnel';
+            return $this->render('admin/adminAllPersonnel.html.twig', [
+                'personnel' => $title
+            ]);
+        }
+
+
+
+    }
+
+
+    #[Route('/admin/requests', name:'admin_requests')]
+    public function requests():Response
+    {
+        return $this->render('admin/requests.html.twig', [
+            'title' => 'Admin homepage'
         ]);
 
     }
