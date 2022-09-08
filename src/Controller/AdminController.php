@@ -2,6 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Building;
+use App\Entity\Room;
+use App\Service\BuildRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,6 +23,8 @@ class AdminController extends AbstractController
         ]);
 
     }
+
+
 
     #[Route('/admin/rooms/{slug}', name:'admin_rooms')]
     public function rooms($slug = null):Response
@@ -76,5 +82,19 @@ class AdminController extends AbstractController
         ]);
 
     }
+
+    #[Route('/allBuildings')]
+    public function printAllBuildings(  EntityManagerInterface $entityManager): Response
+    {
+        $room= new Room();
+
+
+        return new Response($room->getStatus());
+    }
+
+
+
+
+
 
 }

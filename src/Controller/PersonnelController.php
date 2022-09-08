@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Building;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,6 +18,28 @@ class PersonnelController extends AbstractController
         return $this->render('personnel/personnelHomepage.html.twig', [
             'title' => 'Personnel homepage'
         ]);
+
+    }
+
+    #[Route('new' , name:'new_building')]
+    public function new(EntityManagerInterface $entityManager):Response
+    {
+
+        $building = new Building();
+
+        $building->setName('Rainbow')
+            ->setAddress('Don Bosko');
+
+//
+//        $entityManager->persist($building);
+//        $entityManager->flush();
+
+        return new Response(sprintf('New buiding Name: %s , and Address: %s , and Number of Rooms: %d and id: %d ',
+            $building->getName(),
+        $building->getAddress(),
+
+        $building->getId()
+            ));
 
     }
 
