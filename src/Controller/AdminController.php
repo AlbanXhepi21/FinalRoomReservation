@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Building;
+use App\Entity\Personnel;
 use App\Entity\Room;
 use App\Service\BuildRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -24,52 +25,50 @@ class AdminController extends AbstractController
 
     }
 
-
-
-    #[Route('/admin/rooms/{slug}', name:'admin_rooms')]
-    public function rooms($slug = null):Response
+    #[Route('/admin/personnel', name:'admin_allPersonnel')]
+    public function allPersonnel(EntityManagerInterface $entityManager):Response
     {
 
-        if($slug)
-        {
-            $title =' Room: '. u(str_replace('-', ' ', $slug))->title(true);
-            return $this->render('admin/singleRoom.html.twig', [
-                'name' => $title
-            ]);
-        }
-        else
-        {
-            $title = 'Admin Rooms Page, All Rooms';
+        $repository = $entityManager->getRepository(Personnel::class);
 
-            return $this->render('admin/adminAllRooms.html.twig', [
-                'rooms' => $title
+
+            /** @var Personnel|null $personnel */
+            $personnel = $repository->findAll();
+
+            if(!$personnel)
+            {
+                throw $this->createNotFoundException(sprintf('no personnel available'));
+            }
+
+            return $this->render('admin/adminAllPersonnel.html.twig', [
+                'personnel' => $personnel
             ]);
-        }
 
 
     }
 
+
+
+
     #[Route('/admin/personnel/{slug}', name:'admin_personnel')]
-    public function personnel($slug = null):Response
+    public function personnel($slug = null, EntityManagerInterface $entityManager):Response
     {
 
-        if($slug)
-        {
-            $title =' Personnel: '. u(str_replace('-', ' ', $slug))->title(true);
+        $repository = $entityManager->getRepository(Personnel::class);
+
+
+            /** @var Personnel|null $personel */
+            $personnel = $repository->findOneBy(['id'=>$slug]);
+
+            if(!$personnel)
+            {
+                throw $this->createNotFoundException(sprintf('no personnel found with this name: '.$slug));
+            }
+
             return $this->render('admin/singlePersonnel.html.twig', [
-                'name' => $title
+                'personnel' => $personnel,
+
             ]);
-        }
-        else
-        {
-
-            $title = 'Admin Personnel Page, All Personnel';
-            return $this->render('admin/adminAllPersonnel.html.twig', [
-                'personnel' => $title
-            ]);
-        }
-
-
 
     }
 

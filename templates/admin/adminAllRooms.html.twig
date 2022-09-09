@@ -9,7 +9,7 @@
             <caption>List of rooms</caption>
             <thead>
             <tr>
-                <th scope="col">#</th>
+                <th scope="col">Id</th>
                 <th scope="col">Room Name</th>
                 <th scope="col">Capacity</th>
                 <th scope="col">Status</th>
@@ -18,31 +18,16 @@
             </tr>
             </thead>
             <tbody>
+            {% for room in rooms %}
             <tr>
-                <th scope="row">1</th>
-                <td>A27</td>
-                <td>10</td>
-                <td>Free</td>
-                <td>$150</td>
-                <td><button onclick="location.href='/admin/rooms/A27'" type="button" class="btn btn-info">More Info</button></td>
+                <th scope="row">{{ room.id }}</th>
+                <td>{{ room.name }}</td>
+                <td>{{ room.capacity }}</td>
+                <td>free</td>
+                <td>$100</td>
+                <td><button onclick="location.href='/admin/rooms/{{room.id}}'" type="button" class="btn btn-info">More Info</button></td>
 
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>B23</td>
-                <td>5</td>
-                <td>Full</td>
-                <td>$150</td>
-                <td><button onclick="location.href='/admin/rooms/B23'"  type="button" class="btn btn-info">More Info</button></td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>A09</td>
-                <td>23</td>
-                <td>full</td>
-                <td>$150</td>
-                <td> <button onclick="location.href='/admin/rooms/A09'"  type="button" class="btn btn-info">More Info</button> </td>
-            </tr>
+           {% endfor %}
             </tbody>
         </table>
 

@@ -8,7 +8,7 @@
         <caption>List of rooms</caption>
         <thead>
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">Id</th>
             <th scope="col">Name</th>
             <th scope="col">Surname</th>
             <th scope="col">Email</th>
@@ -17,31 +17,18 @@
         </tr>
         </thead>
         <tbody>
+        {% for personel in personnel %}
         <tr>
-            <th scope="row">1</th>
-            <td>Alban</td>
-            <td>Xhepi</td>
-            <td>axhepi21@gmail.com</td>
-            <td>21/01/2001</td>
-            <td><button onclick="location.href='/admin/personnel/Alban-Xhepi'" type="button" class="btn btn-info">More Info</button></td>
+            <th scope="row">{{ personel.id }}</th>
+            <td>{{ personel.name }}</td>
+            <td>{{ personel.surname }}</td>
+            <td>{{ personel.email }}</td>
+            <td>{{  personel.birthday|date('d/m/Y') }}</td>
+            <td><button onclick="location.href='/admin/personnel/{{ personel.id }}'" type="button" class="btn btn-info">More Info</button></td>
 
         </tr>
-        <tr>
-            <th scope="row">1</th>
-            <td>Alban</td>
-            <td>Xhepi</td>
-            <td>axhepi21@gmail.com</td>
-            <td>21/01/2001</td>
-            <td><button onclick="location.href='/admin/personnel/Alban-Xhepi'" type="button" class="btn btn-info">More Info</button></td>
-        </tr>
-        <tr>
-            <th scope="row">1</th>
-            <td>Alban</td>
-            <td>Xhepi</td>
-            <td>axhepi21@gmail.com</td>
-            <td>21/01/2001</td>
-            <td><button onclick="location.href='/admin/personnel/Alban_Xhepi'" type="button" class="btn btn-info">More Info</button></td>
-        </tr>
+        {% endfor %}
+
         </tbody>
     </table>
 

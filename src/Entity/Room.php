@@ -68,7 +68,7 @@ class Room
 
     public function getStatus(): array
     {
-        dd($this->status);
+
         return $this->status;
     }
 
